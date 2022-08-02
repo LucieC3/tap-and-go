@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import Station from '../components/Station';
 
 const Stations = () => {
     const [data, setData] = useState([]);
@@ -23,9 +25,15 @@ const Stations = () => {
       }
     return (
         <div>
+            <ul>
             {data.map((station, index) => (
-                <h3 key={index}>{station.name}</h3>
+                <li key={index}>
+                <Link to={`/stations/${station.stationNumber}`}>
+                <Station station={station} />
+                </Link>
+                </li>
             ))}
+            </ul>
         </div>
     );
 };
