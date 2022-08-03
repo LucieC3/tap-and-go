@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import { staticDatas } from '../data/staticDatas.js';
 
 const containerStyle = {
@@ -41,7 +41,7 @@ const Map = () => {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {staticDatas.map((mark, index) => <Marker key={index} position={{ lat: mark.latitude, lng: mark.longitude }} />)}
+      {staticDatas.map((mark, index) => <Marker key={index} clickable={true} position={{ lat: mark.latitude, lng: mark.longitude }} />)}
       <></>
     </GoogleMap>
 ) : <></>
