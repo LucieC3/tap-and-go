@@ -1,15 +1,18 @@
 import React, { useState, useCallback } from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { staticDatas } from '../data/staticDatas.js';
 
 const containerStyle = {
     width: '400px',
     height: '400px'
   };
   
+  // GPS datas of Nantes //
   const center = {
-    lat: -3.745,
-    lng: -38.523
+    lat: 47.218371,
+    lng: -1.553621
   };
+
 
 const Map = () => {
     const { isLoaded } = useJsApiLoader({
@@ -38,7 +41,7 @@ const Map = () => {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      { /* Child components, such as markers, info windows, etc. */ }
+      {staticDatas.map((mark, index) => <Marker key={index} position={{ lat: mark.latitude, lng: mark.longitude }} />)}
       <></>
     </GoogleMap>
 ) : <></>

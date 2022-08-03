@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-         <Route path="/" element={<Home />} />
-         <Route path="/stations" element={<StationsList />} />
-          <Route path="/stations/:stationNumber" element={<StationDetails />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/stations" element={<StationsList />} />
+          <Route path="/stations/:number" element={<StationDetails />} />
       </Routes>
     </div>
   );
