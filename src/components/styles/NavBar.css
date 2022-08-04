@@ -1,0 +1,16 @@
+.container-bottom-navbar {
+    position: fixed;
+    bottom: 0px;
+    background-color: var(--blue);
+    width: 100vw;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.icon {
+    width: 10vw;
+    height: 3vh;
+    color: black;
+}
