@@ -1,0 +1,11 @@
+.header {
+    background-color: var(--blue);
+    height: 13vh;
+    display: flex;
+    align-items: center;
+}
+
+.logo-header {
+    height: 14vh;
+    width: 14vh;
+}
