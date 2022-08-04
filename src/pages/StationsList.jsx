@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-import Station from "../components/Station";
+import Filter from "../components/Filter";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 
@@ -31,17 +30,8 @@ const Stations = () => {
   return (
     <div>
       <Header />
+      <Filter />
       <SearchBar />
-      <ul>
-        {data &&
-          data.map((station, index) => (
-            <li key={index}>
-              <Link to={`/stations-list/${station.number}`}>
-                <Station station={station} />
-              </Link>
-            </li>
-          ))}
-      </ul>
       <NavBar />
     </div>
   );

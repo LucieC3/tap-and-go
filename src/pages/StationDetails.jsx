@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { MdPayment } from "react-icons/md";
+import NavBar from "../components/NavBar";
 
 const StationDetails = () => {
   const [station, setStation] = useState([]);
@@ -20,9 +22,14 @@ const StationDetails = () => {
 
   return (
     <div>
-      {station.name}
-      {station.address}
-      {station.status}
+      <div className="station-details-container">
+        {station.name}
+        {station.address}
+        {station.status}
+        <MdPayment /> {station.banking}
+        {station.available_bike_stands}
+      </div>
+      <NavBar />
     </div>
   );
 };

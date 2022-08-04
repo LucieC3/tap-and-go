@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Station from "./Station";
 import "./styles/SearchBar.css";
 
 const SearchBar = () => {
@@ -34,15 +36,21 @@ const SearchBar = () => {
         />
       </div>
       <div className="search_results">
-        {datas
-          .filter((station) => station.name.toLowerCase().includes(searchTerm))
-          .filter(
-            (station) =>
-              station.status === "OPEN" && station.available_bikes > 3
-          )
-          .map((station, index) => {
-            return <div className="search_result" key={index}></div>;
-          })}
+        <ul>
+          {datas
+            .filter((station) =>
+              station.name.toLowerCase().includes(searchTerm)
+            )
+            .map((station, index) => {
+              return (
+                <li key={index}>
+                  <Link to={`/stations-list/${station.number}`}>
+                    <Station station={station} />
+                  </Link>
+                </li>
+              );
+            })}
+        </ul>
       </div>
     </>
   );
