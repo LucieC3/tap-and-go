@@ -27,18 +27,20 @@ const Stations = () => {
   if (error || !Array.isArray(data)) {
     return <p>There was an error loading your data !</p>;
   }
+
   return (
     <div>
       <Header />
       <SearchBar />
       <ul>
-        {data.map((station, index) => (
-          <li key={index}>
-            <Link to={`/stations/${station.number}`}>
-              <Station station={station} />
-            </Link>
-          </li>
-        ))}
+        {data &&
+          data.map((station, index) => (
+            <li key={index}>
+              <Link to={`/stations-list/${station.number}`}>
+                <Station station={station} />
+              </Link>
+            </li>
+          ))}
       </ul>
       <NavBar />
     </div>

@@ -1,0 +1,12 @@
+.station-container {
+    background-color: var(--very-light-blue);
+    color: var(--dark-green);
+    height: 8vh;
+    border: 1px solid var(--blue);
+    border-radius: 35px;
+    justify-content: center;
+    text-decoration: none;
+    display: flex;
+    margin: 10px;
+    align-items: center;
+}

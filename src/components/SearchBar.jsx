@@ -13,7 +13,6 @@ const SearchBar = () => {
       )
       .then((response) => response.data)
       .then((data) => {
-        console.log(data);
         setDatas(data);
       });
   }, []);
@@ -22,8 +21,6 @@ const SearchBar = () => {
     let value = e.target.value;
     setSearchTerm(value);
   };
-
-  // console.log(searchTerm);
 
   return (
     <>
@@ -38,9 +35,12 @@ const SearchBar = () => {
       </div>
       <div className="search_results">
         {datas
-          .filter((stat) => stat.name.toLowerCase().includes(searchTerm))
-          .filter((stat) => stat.status === "OPEN" && stat.available_bikes > 3)
-          .map((stat, index) => {
+          .filter((station) => station.name.toLowerCase().includes(searchTerm))
+          .filter(
+            (station) =>
+              station.status === "OPEN" && station.available_bikes > 3
+          )
+          .map((station, index) => {
             return <div className="search_result" key={index}></div>;
           })}
       </div>
