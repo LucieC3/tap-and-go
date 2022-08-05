@@ -26,24 +26,30 @@ const StationDetails = () => {
       });
   }, []);
 
-  if (loading) return <h1>Les données arrivent...</h1>;
+  if (loading) return <h1>Patience...</h1>;
 
   return (
     <div>
       <Header />
       <div className="station-details-container">
-        <div className="station-details-main">
-          <h1>{station.name}</h1>
+        <div className="station-details-header">
+          <h1>N°{station.name}</h1>
           <h2>{station.address}</h2>
         </div>
-        <h3>
-          {" "}
-          <MdPayment /> {station.banking ? <AiOutlineCheck /> : <ImCross />}
-        </h3>
-        <h3>Vélos disponibles : {station.totalStands.availabilities.bikes}</h3>
-        <h3>
-          Places disponibles : {station.totalStands.availabilities.stands}
-        </h3>
+        <div className="station-details-main">
+          <div className="station-availabilities">
+            <h3>
+              Vélos disponibles : {station.totalStands.availabilities.bikes}
+            </h3>
+            <h3>
+              Places disponibles : {station.totalStands.availabilities.stands}
+            </h3>
+          </div>
+          <h3>
+            {" "}
+            <MdPayment /> {station.banking ? <AiOutlineCheck /> : <ImCross />}
+          </h3>
+        </div>
       </div>
       <NavBar />
     </div>

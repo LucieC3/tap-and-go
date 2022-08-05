@@ -41,9 +41,9 @@ function Map() {
           >
             <Link to={`/stations-list/${marker.number}`}>
               <Popup>
-                <h3>{marker.name}</h3>
-                <h4>Vélos restants : {marker.available_bikes}</h4>
-                <h4>Places restantes : {marker.available_bike_stands}</h4>
+                <h3>N° {marker.name}</h3>
+                <h4>Vélos disponibles : {marker.available_bikes}</h4>
+                <h4>Places disponibles : {marker.available_bike_stands}</h4>
               </Popup>
             </Link>
           </Marker>

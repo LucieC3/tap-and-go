@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import SearchBar from "../components/SearchBar";
-import Filter from "../components/Filter";
+import SearchBarFilter from "../components/SearchBarFilter";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 
@@ -30,8 +29,7 @@ const StationsList = () => {
   return (
     <div>
       <Header />
-      <Filter />
-      <SearchBar stations={stations} />
+      <SearchBarFilter stations={stations} />
       <NavBar />
     </div>
   );

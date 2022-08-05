@@ -1,12 +1,30 @@
-.station-container {
+.station-card_container {
     background-color: var(--very-light-blue);
     color: var(--dark-green);
     height: 8vh;
-    border: 1px solid var(--blue);
-    border-radius: 35px;
-    justify-content: center;
-    text-decoration: none;
-    display: flex;
+    width: 95vw;
     margin: 10px;
+    border: 1px solid var(--blue);
+    display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.station-card_content {
+    color: var(--light-blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 88vw;
+}
+
+.station-card_available-bikes {
+    width: 13vw;
+    height: 6vh;
+    color: var(--dark-green);
+    background-color: white;
+    border-radius: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
