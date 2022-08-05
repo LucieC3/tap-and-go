@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "../App.css";
 import Header from "../components/Header";
@@ -8,7 +9,7 @@ import NavBar from "../components/NavBar";
 // GPS datas of Nantes //
 const center = [47.218371, -1.553621];
 
-function MapBis() {
+function Map() {
   const [stations, setStations] = useState([]);
 
   useEffect(() => {
@@ -23,6 +24,8 @@ function MapBis() {
       });
   }, []);
 
+  // const bikesNumber = stations.map((bike) => bike.available_bikes);
+
   return (
     <div>
       <Header />
@@ -36,10 +39,13 @@ function MapBis() {
             key={index}
             position={[marker.position.lat, marker.position.lng]}
           >
-            <Popup>
-              <h3>{marker.name}</h3>
-              <h4>Vélos restants : {marker.available_bikes}</h4>
-            </Popup>
+            <Link to={`/stations-list/${marker.number}`}>
+              <Popup>
+                <h3>{marker.name}</h3>
+                <h4>Vélos restants : {marker.available_bikes}</h4>
+                <h4>Places restantes : {marker.available_bike_stands}</h4>
+              </Popup>
+            </Link>
           </Marker>
         ))}
       </MapContainer>
@@ -48,4 +54,4 @@ function MapBis() {
   );
 }
 
-export default MapBis;
+export default Map;

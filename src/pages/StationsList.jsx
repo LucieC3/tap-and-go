@@ -5,8 +5,8 @@ import Filter from "../components/Filter";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 
-const Stations = () => {
-  const [data, setData] = useState([]);
+const StationsList = () => {
+  const [stations, setStations] = useState([]);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -16,14 +16,14 @@ const Stations = () => {
       )
       .then((response) => response.data)
       .then((data) => {
-        setData(data);
+        setStations(data);
       })
       .catch((err) => {
         setError(err);
       });
   }, []);
 
-  if (error || !Array.isArray(data)) {
+  if (error || !Array.isArray(stations)) {
     return <p>There was an error loading your data !</p>;
   }
 
@@ -31,10 +31,10 @@ const Stations = () => {
     <div>
       <Header />
       <Filter />
-      <SearchBar />
+      <SearchBar stations={stations} />
       <NavBar />
     </div>
   );
 };
 
-export default Stations;
+export default StationsList;

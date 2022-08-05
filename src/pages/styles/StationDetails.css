@@ -1,0 +1,17 @@
+.station-details-container {
+    background: var(--very-light-blue);
+    height: 25vh;
+}
+
+.station-details-main {
+    height: 20vh;
+    background: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.station-details-main h1 {
+    font-size: 2rem;
+}
