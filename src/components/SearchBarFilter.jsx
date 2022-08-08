@@ -1,42 +1,55 @@
 import React, { useState } from "react";
 import StationCard from "./StationCard";
 import Checkbox from "./Checkbox";
-import "./styles/SearchBar.css";
+import "./styles/SearchBarFilter.css";
 
 const SearchBarFilter = ({ stations }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [onlyOpen, setOnlyOpen] = useState(false);
+  const [bikeQuantity, setBikeQuantity] = useState(0);
 
   const handleSearchTerm = (e) => {
     let value = e.target.value;
     setSearchTerm(value);
   };
 
-  function handleOnlyOpen() {
+  const handleOnlyOpen = () => {
     setOnlyOpen(!onlyOpen);
-  }
+  };
+
+  const handleBikeQuantity = (e) => {
+    let value = e.target.value;
+    setBikeQuantity(value);
+  };
 
   return (
     <>
-      <div className="searchBar">
+      <div className="searchbar-container">
         <input
           className="input-searchbar"
           type="text"
-          name="searchBar"
-          id="searchBar"
+          name="searchbar"
+          id="searchbar"
           placeholder="Trouver votre station..."
           onChange={handleSearchTerm}
         />
       </div>
       <div className="search-results">
-        <h1>Toutes les stations :</h1>
         <Checkbox onClick={handleOnlyOpen} />
+        <label>Nombre de vélo dispo</label>
+        <input
+          type="number"
+          onChange={handleBikeQuantity}
+          value={bikeQuantity}
+        />
+        <h1 className="title_all-stations">Toutes les stations :</h1>
         <ul>
           {stations
             .filter((station) =>
               station.name.toLowerCase().includes(searchTerm)
             )
             .filter((station) => (onlyOpen ? station.status === "OPEN" : true))
+            .filter((station) => station.available_bikes >= bikeQuantity)
             .map((station, index) => (
               <li key={index}>
                 <StationCard station={station} />

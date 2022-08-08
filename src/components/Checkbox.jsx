@@ -1,11 +1,16 @@
 import React from "react";
+import "./styles/Checkbox.css";
 
-const Checkbox = ({ label, value, onClick }) => {
+const Checkbox = ({ value, onClick }) => {
   return (
-    <div>
-      {" "}
+    <div className="checkbox-container">
       <label>
-        <input type="checkbox" checked={value} onClick={onClick} />
+        <input
+          className="input-checkbox"
+          type="checkbox"
+          checked={value}
+          onClick={onClick}
+        />
         Stations ouvertes uniquement
       </label>
     </div>

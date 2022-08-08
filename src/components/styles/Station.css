@@ -10,6 +10,10 @@
     justify-content: center;
 }
 
+.station-card_container:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .station-card_content {
     color: var(--light-blue);
     display: flex;
@@ -27,4 +31,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+    .station-card_available-bikes {
+        
+    }
 }

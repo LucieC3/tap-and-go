@@ -1,10 +1,27 @@
+.stations-details_all {
+    background-color: var(--very-light-blue);
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .station-details-container {
-    background: var(--very-light-blue);
+    background-color: white;
+    width: 95vw;
+    height: 75vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .station-details-header {
-    background: var(--green);
-    height: 20vh;
+    background-color: var(--green);
+    height: 30vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,9 +29,35 @@
 }
 
 .station-details-header h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
 }
 
 .station-details-main {
-    height: 35vh;
+    height: 20vh;
+    width: 85vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.station-details-main h3 {
+    font-size: 1.6rem;
+}
+
+.banking-icon {
+    width: 8vw;
+    height: 4vh;
+}
+
+.checked-icon {
+    width: 6vw;
+    height: 3.5vh;
+    color: green;
+}
+
+.cross-icon {
+    width: 4vw;
+    height: 4vh;
+    color: red;
 }

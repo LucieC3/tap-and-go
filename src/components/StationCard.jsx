@@ -10,7 +10,7 @@ const StationCard = ({ station }) => {
         className="station-card_content"
         to={`/stations-list/${station.number}`}
       >
-        <h2>{station.name}</h2>
+        <h2>{station.name.substr(station.name.lastIndexOf("-") + 1)}</h2>
         <div className="station-card_available-bikes">
           <MdPedalBike />
           <h3>{station.available_bikes}</h3>

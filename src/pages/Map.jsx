@@ -2,9 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "../App.css";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import * as L from "leaflet";
+import DesktopList from "../components/DesktopList";
 
 // GPS datas of Nantes //
 const center = [47.218371, -1.553621];
@@ -19,21 +18,18 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        console.log(data);
         setStations(data);
       });
   }, []);
 
-  // const bikesNumber = stations.map((bike) => bike.available_bikes);
-
   return (
     <div>
-      <Header />
       <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <DesktopList stations={stations} />
         {stations.map((marker, index) => (
           <Marker
             key={index}
@@ -41,7 +37,8 @@ function Map() {
           >
             <Link to={`/stations-list/${marker.number}`}>
               <Popup>
-                <h3>N° {marker.name}</h3>
+                <h3>{marker.name.substr(marker.name.lastIndexOf("-") + 1)}</h3>
+                <h4>{marker.address}</h4>
                 <h4>Vélos disponibles : {marker.available_bikes}</h4>
                 <h4>Places disponibles : {marker.available_bike_stands}</h4>
               </Popup>
@@ -49,7 +46,6 @@ function Map() {
           </Marker>
         ))}
       </MapContainer>
-      <NavBar />
     </div>
   );
 }

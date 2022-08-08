@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import { MdPayment } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
 import { ImCross } from "react-icons/im";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
 import "./styles/StationDetails.css";
 
 const StationDetails = () => {
@@ -30,28 +28,31 @@ const StationDetails = () => {
 
   return (
     <div>
-      <Header />
-      <div className="station-details-container">
-        <div className="station-details-header">
-          <h1>N°{station.name}</h1>
-          <h2>{station.address}</h2>
-        </div>
-        <div className="station-details-main">
-          <div className="station-availabilities">
+      <div className="stations-details_all">
+        <div className="station-details-container">
+          <div className="station-details-header">
+            <h1> {station.name.substr(station.name.lastIndexOf("-") + 1)}</h1>
+            <h2>{station.address}</h2>
+          </div>
+          <div className="station-details-main">
             <h3>
               Vélos disponibles : {station.totalStands.availabilities.bikes}
             </h3>
             <h3>
               Places disponibles : {station.totalStands.availabilities.stands}
             </h3>
+            <h3>
+              {" "}
+              <MdPayment className="banking-icon" />{" "}
+              {station.banking ? (
+                <AiOutlineCheck className="checked-icon" />
+              ) : (
+                <ImCross className="cross-icon" />
+              )}
+            </h3>
           </div>
-          <h3>
-            {" "}
-            <MdPayment /> {station.banking ? <AiOutlineCheck /> : <ImCross />}
-          </h3>
         </div>
       </div>
-      <NavBar />
     </div>
   );
 };

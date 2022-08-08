@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import DesktopList from "../components/DesktopList";
 import SearchBarFilter from "../components/SearchBarFilter";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
 
 const StationsList = () => {
   const [stations, setStations] = useState([]);
@@ -15,6 +14,7 @@ const StationsList = () => {
       )
       .then((response) => response.data)
       .then((data) => {
+        console.log(data);
         setStations(data);
       })
       .catch((err) => {
@@ -28,9 +28,7 @@ const StationsList = () => {
 
   return (
     <div>
-      <Header />
       <SearchBarFilter stations={stations} />
-      <NavBar />
     </div>
   );
 };
