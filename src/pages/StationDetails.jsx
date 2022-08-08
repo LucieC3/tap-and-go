@@ -7,7 +7,7 @@ import { ImCross } from "react-icons/im";
 import "./styles/StationDetails.css";
 
 const StationDetails = () => {
-  const [station, setStation] = useState([]);
+  const [station, setStation] = useState({});
   const [loading, setLoading] = useState(true);
   const { number } = useParams();
 

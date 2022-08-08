@@ -1,10 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DesktopList from "../components/DesktopList";
 import SearchBarFilter from "../components/SearchBarFilter";
+import SearchBarResults from "../components/SearchBarResults";
+import StationContext from "../contexts/StationContext";
 
 const StationsList = () => {
-  const [stations, setStations] = useState([]);
+  const { stations, setStations } = useContext(StationContext);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -22,13 +24,16 @@ const StationsList = () => {
       });
   }, []);
 
+  console.log("StationsList", { stations });
+
   if (error || !Array.isArray(stations)) {
     return <p>There was an error loading your data !</p>;
   }
 
   return (
     <div>
-      <SearchBarFilter stations={stations} />
+      <SearchBarFilter />
+      <SearchBarResults />
     </div>
   );
 };

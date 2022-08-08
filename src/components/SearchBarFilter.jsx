@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import StationCard from "./StationCard";
 import Checkbox from "./Checkbox";
 import "./styles/SearchBarFilter.css";
+import FilterContext from "../contexts/FilterContext";
 
-const SearchBarFilter = ({ stations }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [onlyOpen, setOnlyOpen] = useState(false);
-  const [bikeQuantity, setBikeQuantity] = useState(0);
+const SearchBarFilter = ({ className = "" }) => {
+  const {
+    searchTerm,
+    setSearchTerm,
+    onlyOpen,
+    setOnlyOpen,
+    bikeQuantity,
+    setBikeQuantity,
+  } = useContext(FilterContext);
 
   const handleSearchTerm = (e) => {
     let value = e.target.value;
@@ -32,6 +38,7 @@ const SearchBarFilter = ({ stations }) => {
           id="searchbar"
           placeholder="Trouver votre station..."
           onChange={handleSearchTerm}
+          value={searchTerm}
         />
       </div>
       <div className="search-results">
@@ -42,20 +49,6 @@ const SearchBarFilter = ({ stations }) => {
           onChange={handleBikeQuantity}
           value={bikeQuantity}
         />
-        <h1 className="title_all-stations">Toutes les stations :</h1>
-        <ul>
-          {stations
-            .filter((station) =>
-              station.name.toLowerCase().includes(searchTerm)
-            )
-            .filter((station) => (onlyOpen ? station.status === "OPEN" : true))
-            .filter((station) => station.available_bikes >= bikeQuantity)
-            .map((station, index) => (
-              <li key={index}>
-                <StationCard station={station} />
-              </li>
-            ))}
-        </ul>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import NavBarFooter from "./components/NavBarFooter";
@@ -12,9 +12,24 @@ import FilterContext from "./contexts/FilterContext";
 import StationContext from "./contexts/StationContext";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [onlyOpen, setOnlyOpen] = useState(false);
+  const [bikeQuantity, setBikeQuantity] = useState(0);
+
+  const [stations, setStations] = useState([]);
+
   return (
-    <FilterContext.Provider>
-      <StationContext.Provider>
+    <FilterContext.Provider
+      value={{
+        searchTerm,
+        setSearchTerm,
+        onlyOpen,
+        setOnlyOpen,
+        bikeQuantity,
+        setBikeQuantity,
+      }}
+    >
+      <StationContext.Provider value={{ stations, setStations }}>
         <div className="App">
           <Header />
           <Routes>
