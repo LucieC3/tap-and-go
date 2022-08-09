@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdPedalBike } from "react-icons/md";
+
 import "./styles/StationCard.css";
 
 const StationCard = ({ station }) => {

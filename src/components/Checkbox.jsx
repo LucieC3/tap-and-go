@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./styles/Checkbox.css";
 
 const Checkbox = ({ value, onClick }) => {

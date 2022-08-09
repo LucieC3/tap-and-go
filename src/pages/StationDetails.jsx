@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { MdPayment } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
 import { ImCross } from "react-icons/im";
+
 import "./styles/StationDetails.css";
 
 const StationDetails = () => {
@@ -27,7 +28,7 @@ const StationDetails = () => {
 
   return (
     <div>
-      <div className="stations-details_all">
+      <div className="stations-details-all">
         <div className="station-details-container">
           <div className="station-details-header">
             <h1> {station.name.substr(station.name.lastIndexOf("-") + 1)}</h1>

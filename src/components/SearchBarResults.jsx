@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import FilterContext from "../contexts/FilterContext";
 import StationContext from "../contexts/StationContext";
 import StationCard from "./StationCard";
+
 import "./styles/SearchBarResults.css";
 
 const SearchBarResults = () => {

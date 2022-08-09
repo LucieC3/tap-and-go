@@ -1,4 +1,4 @@
-.stations-details_all {
+.stations-details-all {
     background-color: var(--very-light-blue);
     height: 80vh;
     width: 100%;
@@ -70,9 +70,9 @@
 
 @media screen and (min-width: 768px) {
 
-.stations-details_all {
+.stations-details-all {
     height: 87vh;
-    }
+}
     
 .station-details-container {
     width: 35vw;
@@ -89,4 +89,5 @@
 .cross-icon {
     width: 2vw;
 }
+
 }

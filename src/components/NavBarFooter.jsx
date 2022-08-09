@@ -4,6 +4,7 @@ import { AiFillHome } from "react-icons/ai";
 import { GrMapLocation } from "react-icons/gr";
 import { FaListUl } from "react-icons/fa";
 import { TbMapPins } from "react-icons/tb";
+
 import "./styles/NavBarFooter.css";
 
 const NavBar = () => {
