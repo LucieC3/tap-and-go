@@ -1,33 +1,68 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "../App.css";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
-// import { Icon } from "leaflet";
+import SearchBarFilter from "../components/SearchBarFilter";
+import SearchBarResults from "../components/SearchBarResults";
+import StationContext from "../contexts/StationContext";
+import FilterContext from "../contexts/FilterContext";
 
-const position = [47.2121084631418, -1.55304912932047];
+import "./styles/Map.css";
 
-// GPS datas of Nantes //
+// GPS datas : Nantes //
 const center = [47.218371, -1.553621];
 
-function MapBis() {
+function Map() {
+  const { stations, setStations } = useContext(StationContext);
+  const { searchTerm, onlyOpen, bikeQuantity } = useContext(FilterContext);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://api.jcdecaux.com/vls/v1/stations?contract=nantes&apiKey=0755767fea34480e5e7bd38aad7b7468972dcc7c"
+      )
+      .then((response) => response.data)
+      .then((data) => {
+        setStations(data);
+      });
+  }, []);
+
   return (
-    <div>
-      <Header />
-      <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
+    <div className="map-container">
+      <div className="map-search-bar">
+        <SearchBarFilter />
+        <SearchBarResults />
+      </div>
+
+      <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+        {stations
+          .filter((station) => station.name.toLowerCase().includes(searchTerm))
+          .filter((station) => (onlyOpen ? station.status === "OPEN" : true))
+          .filter((station) => station.available_bikes >= bikeQuantity)
+          .map((marker, index) => (
+            <Marker
+              key={index}
+              position={[marker.position.lat, marker.position.lng]}
+            >
+              <Link to={`/stations-list/${marker.number}`}>
+                <Popup>
+                  <h3>
+                    {marker.name.substr(marker.name.lastIndexOf("-") + 1)}
+                  </h3>
+                  <h4>{marker.address}</h4>
+                  <h4>Vélos disponibles : {marker.available_bikes}</h4>
+                  <h4>Places disponibles : {marker.available_bike_stands}</h4>
+                </Popup>
+              </Link>
+            </Marker>
+          ))}
       </MapContainer>
-      <NavBar />
     </div>
   );
 }
 
-export default MapBis;
+export default Map;

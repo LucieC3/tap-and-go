@@ -9,3 +9,31 @@
     height: 14vh;
     width: 14vh;
 }
+
+.categories-header {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-title {
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .header h3 {
+        color: white;
+        border-radius: 10px;
+    }
+
+    .categories-header {
+        width: 15vw;
+        display: flex;
+        justify-content: space-around;
+    }
+
+}

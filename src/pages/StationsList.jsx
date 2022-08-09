@@ -1,13 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import SearchBar from "../components/SearchBar";
-import Station from "../components/Station";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import React, { useContext, useEffect, useState } from "react";
+import SearchBarFilter from "../components/SearchBarFilter";
+import SearchBarResults from "../components/SearchBarResults";
+import StationContext from "../contexts/StationContext";
 
-const Stations = () => {
-  const [data, setData] = useState([]);
+const StationsList = () => {
+  const { stations, setStations } = useContext(StationContext);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -17,32 +15,26 @@ const Stations = () => {
       )
       .then((response) => response.data)
       .then((data) => {
-        setData(data);
+        console.log(data);
+        setStations(data);
       })
       .catch((err) => {
         setError(err);
       });
   }, []);
 
-  if (error || !Array.isArray(data)) {
+  // console.log("StationsList", { stations });
+
+  if (error || !Array.isArray(stations)) {
     return <p>There was an error loading your data !</p>;
   }
+
   return (
     <div>
-      <Header />
-      <SearchBar />
-      <ul>
-        {data.map((station, index) => (
-          <li key={index}>
-            <Link to={`/stations/${station.number}`}>
-              <Station station={station} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <NavBar />
+      <SearchBarFilter />
+      <SearchBarResults />
     </div>
   );
 };
 
-export default Stations;
+export default StationsList;

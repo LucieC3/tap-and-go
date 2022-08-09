@@ -1,9 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { MdPayment } from "react-icons/md";
+import { AiOutlineCheck } from "react-icons/ai";
+import { ImCross } from "react-icons/im";
+import "./styles/StationDetails.css";
 
 const StationDetails = () => {
-  const [station, setStation] = useState([]);
+  const [station, setStation] = useState({});
+  const [loading, setLoading] = useState(true);
   const { number } = useParams();
 
   useEffect(() => {
@@ -15,14 +20,39 @@ const StationDetails = () => {
       .then((data) => {
         console.log(data);
         setStation(data);
+        setLoading(false);
       });
-  }, [number]);
+  }, []);
+
+  if (loading) return <h1>Patience...</h1>;
 
   return (
     <div>
-      {station.name}
-      {station.address}
-      {station.status}
+      <div className="stations-details_all">
+        <div className="station-details-container">
+          <div className="station-details-header">
+            <h1> {station.name.substr(station.name.lastIndexOf("-") + 1)}</h1>
+            <h2>{station.address}</h2>
+          </div>
+          <div className="station-details-main">
+            <h3>
+              Vélos disponibles : {station.totalStands.availabilities.bikes}
+            </h3>
+            <h3>
+              Places disponibles : {station.totalStands.availabilities.stands}
+            </h3>
+            <h3>
+              {" "}
+              <MdPayment className="banking-icon" />{" "}
+              {station.banking ? (
+                <AiOutlineCheck className="checked-icon" />
+              ) : (
+                <ImCross className="cross-icon" />
+              )}
+            </h3>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

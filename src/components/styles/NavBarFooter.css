@@ -14,3 +14,9 @@
     height: 3vh;
     color: black;
 }
+
+@media screen and (min-width: 768px) {
+    .container-bottom-navbar {
+       display: none;
+   }    
+}
