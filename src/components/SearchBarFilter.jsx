@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import StationCard from "./StationCard";
+import React, { useContext } from "react";
 import Checkbox from "./Checkbox";
-import "./styles/SearchBarFilter.css";
 import FilterContext from "../contexts/FilterContext";
 
-const SearchBarFilter = ({ className = "" }) => {
+import "./styles/SearchBarFilter.css";
+
+const SearchBarFilter = () => {
   const {
     searchTerm,
     setSearchTerm,
@@ -41,10 +41,11 @@ const SearchBarFilter = ({ className = "" }) => {
           value={searchTerm}
         />
       </div>
-      <div className="search-results">
+      <div className="search-options">
         <Checkbox onClick={handleOnlyOpen} />
-        <label>Nombre de vélo dispo</label>
+        <label>Vélos disponibles :</label>
         <input
+          className="input-availables-bikes"
           type="number"
           onChange={handleBikeQuantity}
           value={bikeQuantity}

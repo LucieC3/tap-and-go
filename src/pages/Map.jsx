@@ -1,14 +1,15 @@
 import axios from "axios";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import * as L from "leaflet";
-import DesktopList from "../components/DesktopList";
 import SearchBarFilter from "../components/SearchBarFilter";
+import SearchBarResults from "../components/SearchBarResults";
 import StationContext from "../contexts/StationContext";
 import FilterContext from "../contexts/FilterContext";
 
-// GPS datas of Nantes //
+import "./styles/Map.css";
+
+// GPS datas : Nantes //
 const center = [47.218371, -1.553621];
 
 function Map() {
@@ -27,15 +28,17 @@ function Map() {
   }, []);
 
   return (
-    <div>
-      <SearchBarFilter />
+    <div className="map-container">
+      <div className="map-search-bar">
+        <SearchBarFilter />
+        <SearchBarResults />
+      </div>
 
       <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <DesktopList stations={stations} />
         {stations
           .filter((station) => station.name.toLowerCase().includes(searchTerm))
           .filter((station) => (onlyOpen ? station.status === "OPEN" : true))

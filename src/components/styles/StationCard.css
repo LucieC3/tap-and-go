@@ -23,8 +23,8 @@
 }
 
 .station-card_available-bikes {
-    width: 13vw;
-    height: 6vh;
+    width: 3rem;
+    height: 3rem;
     color: var(--dark-green);
     background-color: white;
     border-radius: 65px;
@@ -33,8 +33,16 @@
     justify-content: center;
 }
 
+.not-enough-bikes {
+color: red;
+}
+
 @media screen and (min-width: 768px) {
-    .station-card_available-bikes {
-        
+    .station-card_container {
+        width: 26vw;
+    }
+
+    .station-card_content {
+
     }
 }

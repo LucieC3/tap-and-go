@@ -2,26 +2,30 @@
     padding: 2rem 1rem;
 }
 
+.search-options {
+    padding: 6px;
+    margin: 10px;
+}
+
 .input-searchbar {
     height: 5vh;
     width: 250px;
     border-radius: 20px;
 }
 
-.title_all-stations {
-
-}
-
 .input-searchbar::placeholder {
     margin-left: 10px;
 }
 
-.search-results {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.input-availables-bikes {
+    width: 40px;
+    border-radius: 15px;
+    margin-left: 5px;
 }
 
 @media screen and (min-width: 768px) {
 
+    .map-search-bar .searchbar-container {
+
+    }
 }

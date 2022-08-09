@@ -1,0 +1,34 @@
+
+.leaflet-container {
+    width: 100%;
+    height: 56vh;
+}
+
+.map-container .search-results {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+
+    .map-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .map-search-bar {
+        width: 28%;
+    }
+
+    .leaflet-container {
+        width: 71%;
+        height: 78vh;
+    }
+
+    .map-container .search-results {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+

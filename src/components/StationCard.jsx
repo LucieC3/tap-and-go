@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdPedalBike } from "react-icons/md";
-import "./styles/Station.css";
+import "./styles/StationCard.css";
 
 const StationCard = ({ station }) => {
   return (
@@ -12,8 +12,12 @@ const StationCard = ({ station }) => {
       >
         <h2>{station.name.substr(station.name.lastIndexOf("-") + 1)}</h2>
         <div className="station-card_available-bikes">
-          <MdPedalBike />
-          <h3>{station.available_bikes}</h3>
+          <h3
+            className={station.available_bikes >= 3 ? null : "not-enough-bikes"}
+          >
+            <MdPedalBike />
+            {station.available_bikes}
+          </h3>
         </div>
       </Link>
     </div>

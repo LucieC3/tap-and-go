@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import DesktopList from "../components/DesktopList";
 import SearchBarFilter from "../components/SearchBarFilter";
 import SearchBarResults from "../components/SearchBarResults";
 import StationContext from "../contexts/StationContext";
@@ -24,7 +23,7 @@ const StationsList = () => {
       });
   }, []);
 
-  console.log("StationsList", { stations });
+  // console.log("StationsList", { stations });
 
   if (error || !Array.isArray(stations)) {
     return <p>There was an error loading your data !</p>;
