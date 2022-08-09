@@ -1,6 +1,7 @@
 .header {
     background-color: var(--blue);
     height: 13vh;
+    width: 100vw;
     display: flex;
     align-items: center;
 }
