@@ -7,9 +7,10 @@ import Map from "./pages/Map";
 import StationsList from "./pages/StationsList";
 import StationDetails from "./pages/StationDetails";
 import Itinerary from "./pages/Itinerary";
-import "./App.css";
 import FilterContext from "./contexts/FilterContext";
 import StationContext from "./contexts/StationContext";
+
+import "./App.css";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");

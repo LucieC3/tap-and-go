@@ -1,4 +1,4 @@
-.stations-details_all {
+.stations-details-all {
     background-color: var(--very-light-blue);
     height: 80vh;
     width: 100%;
@@ -26,6 +26,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    border-bottom: 3px solid var(--very-light-blue);
 }
 
 .station-details-header h1 {
@@ -33,12 +34,17 @@
     text-align: center;
 }
 
+.station-details-header h2 {
+    text-align: center;
+    }
+
 .station-details-main {
     height: 20vh;
     width: 85vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .station-details-main h3 {
@@ -60,4 +66,28 @@
     width: 4vw;
     height: 4vh;
     color: red;
+}
+
+@media screen and (min-width: 768px) {
+
+.stations-details-all {
+    height: 87vh;
+}
+    
+.station-details-container {
+    width: 35vw;
+}
+
+.banking-icon {
+    width: 4vw;
+}
+
+.checked-icon {
+    width: 2vw;
+}
+
+.cross-icon {
+    width: 2vw;
+}
+
 }

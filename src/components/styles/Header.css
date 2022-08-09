@@ -1,8 +1,13 @@
 .header {
     background-color: var(--blue);
     height: 13vh;
+    width: 100vw;
     display: flex;
     align-items: center;
+}
+
+.header-title {
+    font-size: 1.3rem;
 }
 
 .logo-header {
@@ -22,7 +27,6 @@
 
     .header-title {
         font-size: 1.5rem;
-        color: white;
     }
 
     .header h3 {

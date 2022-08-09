@@ -15,15 +15,12 @@ const StationsList = () => {
       )
       .then((response) => response.data)
       .then((data) => {
-        console.log(data);
         setStations(data);
       })
       .catch((err) => {
         setError(err);
       });
   }, []);
-
-  // console.log("StationsList", { stations });
 
   if (error || !Array.isArray(stations)) {
     return <p>There was an error loading your data !</p>;

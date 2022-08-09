@@ -1,0 +1,36 @@
+.photo-home-mobile {
+    width: 100vw;
+    height: 80vh;
+}
+
+.photo-home-desktop {
+    display: none;
+}
+
+.home-title {
+    font-size: 55px;
+    color: white;
+    position: absolute;
+    top: 200px;
+    right: 810px;
+    left: 50px;
+  }
+
+@media screen and (min-width: 768px) {
+    
+.photo-home-mobile {
+    display: none;
+ }
+
+.photo-home-desktop {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    }
+
+.home-title {
+    color: black;
+    opacity: 0.7;
+}
+
+}

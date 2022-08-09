@@ -1,20 +1,19 @@
-.station-card_container {
+.station-card-container {
     background-color: var(--very-light-blue);
     color: var(--dark-green);
     height: 8vh;
     width: 95vw;
     margin: 10px;
-    border: 1px solid var(--blue);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.station-card_container:hover {
+.station-card-container:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.station-card_content {
+.station-card-content {
     color: var(--light-blue);
     display: flex;
     align-items: center;
@@ -22,15 +21,15 @@
     width: 88vw;
 }
 
-.station-card_available-bikes {
+.station-card-available-bikes {
     width: 3rem;
     height: 3rem;
-    color: var(--dark-green);
     background-color: white;
     border-radius: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 6px;
 }
 
 .not-enough-bikes {
@@ -38,11 +37,11 @@ color: red;
 }
 
 @media screen and (min-width: 768px) {
-    .station-card_container {
+    .station-card-container {
         width: 26vw;
     }
 
-    .station-card_content {
-
+    .station-card-content {
+        margin-left: 5px;
     }
 }

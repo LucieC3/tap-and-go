@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles/Header.css";
 import logo from "../assets/logo-tap-and-go-bis.png";
+
+import "./styles/Header.css";
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
       <Link to="/">
         <img className="logo-header" src={logo} alt="vélo lunettes" />
       </Link>
-      <h1 className="header-title">TAP AND GO</h1>
+      <h1 className="header-title">Tap And Go</h1>
       <div className="categories-header">
         <div>
           <Link to="/stations-map">
