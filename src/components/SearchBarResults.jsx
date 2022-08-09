@@ -10,7 +10,7 @@ const SearchBarResults = () => {
 
   return (
     <div className="search-results">
-      <h1 className="title_all-stations">Toutes les stations :</h1>
+      <h1 className="title-all-stations">Toutes les stations :</h1>
       <ul>
         {stations
           .filter((station) => station.name.toLowerCase().includes(searchTerm))

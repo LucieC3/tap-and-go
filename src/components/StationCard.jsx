@@ -5,13 +5,13 @@ import "./styles/StationCard.css";
 
 const StationCard = ({ station }) => {
   return (
-    <div className="station-card_container">
+    <div className="station-card-container">
       <Link
-        className="station-card_content"
+        className="station-card-content"
         to={`/stations-list/${station.number}`}
       >
         <h2>{station.name.substr(station.name.lastIndexOf("-") + 1)}</h2>
-        <div className="station-card_available-bikes">
+        <div className="station-card-available-bikes">
           <h3
             className={station.available_bikes >= 3 ? null : "not-enough-bikes"}
           >

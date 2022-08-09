@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import StationContext from "../contexts/StationContext";
 
+import "./styles/Itinerary.css";
+
 const Itinerary = () => {
   const { stations, setStations } = useContext(StationContext);
 
@@ -100,22 +102,29 @@ const Itinerary = () => {
   };
 
   return (
-    <div>
-      <form>
+    <div className="itinerary-page">
+      <form className="itinerary-container">
+        <h1 className="itinerary-title">Itinéraire</h1>
         <input
+          className="itinerary-input"
           type="text"
-          placeholder="Départ"
+          placeholder="Adresse de départ..."
           onBlur={(e) => searchFeatures(setStartFeatures, e)}
           onChange={(e) => handleStart(e)}
           value={start}
         />
         {startStation && (
-          <div>{startStation.name + " - " + startStation.address}</div>
+          <div className="itinerary-final-result">
+            {startStation.name.substr(startStation.name.lastIndexOf("-") + 1) +
+              " - " +
+              startStation.address}
+          </div>
         )}
         <ul>
           {startFeatures.map((feature, index) => {
             return (
               <li
+                className="itinerary-result-adress"
                 key={index}
                 onClick={() => searchClosestStartStation(feature)}
               >
@@ -125,23 +134,31 @@ const Itinerary = () => {
           })}
         </ul>
         <input
+          className="itinerary-input"
           type="text"
-          placeholder="Arrivée"
+          placeholder="Adresse d'arrivée..."
           onBlur={(e) => searchFeatures(setEndFeatures, e)}
           onChange={(e) => handleEnd(e)}
           value={end}
         />
         {endStation && (
-          <div>{endStation.name + " - " + endStation.address}</div>
+          <div className="itinerary-final-result">
+            {endStation.name.substr(endStation.name.lastIndexOf("-") + 1) +
+              " - " +
+              endStation.address}
+          </div>
         )}
         <ul>
           {endFeatures.map((feature, index) => (
-            <li key={index} onClick={() => searchClosestEndStation(feature)}>
+            <li
+              className="itinerary-result-adress"
+              key={index}
+              onClick={() => searchClosestEndStation(feature)}
+            >
               {feature.properties.label}
             </li>
           ))}
         </ul>
-        <button type="button">GO</button>
       </form>
     </div>
   );

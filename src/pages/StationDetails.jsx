@@ -18,7 +18,6 @@ const StationDetails = () => {
       )
       .then((response) => response.data)
       .then((data) => {
-        console.log(data);
         setStation(data);
         setLoading(false);
       });

@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.header-title {
+    font-size: 1.3rem;
+}
+
 .logo-header {
     height: 14vh;
     width: 14vh;
@@ -22,7 +26,6 @@
 
     .header-title {
         font-size: 1.5rem;
-        color: white;
     }
 
     .header h3 {

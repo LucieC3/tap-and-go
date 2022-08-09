@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { FaMapPin } from "react-icons/fa";
 import SearchBarFilter from "../components/SearchBarFilter";
 import SearchBarResults from "../components/SearchBarResults";
 import StationContext from "../contexts/StationContext";
@@ -53,9 +54,12 @@ function Map() {
                   <h3>
                     {marker.name.substr(marker.name.lastIndexOf("-") + 1)}
                   </h3>
-                  <h4>{marker.address}</h4>
-                  <h4>Vélos disponibles : {marker.available_bikes}</h4>
-                  <h4>Places disponibles : {marker.available_bike_stands}</h4>
+                  <h4>
+                    <FaMapPin className="point-icon" />
+                    {marker.address}
+                  </h4>
+                  <p>Vélos disponibles : {marker.available_bikes}</p>
+                  <p>Places disponibles : {marker.available_bike_stands}</p>
                 </Popup>
               </Link>
             </Marker>
